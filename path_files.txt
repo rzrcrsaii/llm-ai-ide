@@ -1,0 +1,459 @@
+Here’s a full “create‐this‐file” checklist organized by folder. Simply work top‐down through each group, checking off as you scaffold each file:
+
+```markdown
+# 🏗️ Monorepo File Creation To-Do List
+
+## .github/workflows
+- [ ] `.github/workflows/ci.yml`
+- [ ] `.github/workflows/release.yml`
+- [ ] `.github/workflows/nightly-fine-tune.yml`
+- [ ] `.github/workflows/e2e-tests.yml`
+
+## Root config & scripts
+- [ ] `.env.example`
+- [ ] `.eslintignore`
+- [ ] `.eslintrc.js`
+- [ ] `.gitignore`
+- [ ] `.prettierignore`
+- [ ] `.prettierrc.js`
+- [ ] `Dockerfile`
+- [ ] `docker-compose.yml`
+- [ ] `pnpm-workspace.yaml`
+- [ ] `package.json` (workspace root)
+- [ ] `tsconfig.base.json`
+- [ ] `README.md`
+
+## common/
+- [ ] `common/package.json`
+- [ ] `common/tsconfig.json`
+- [ ] `common/src/constants/index.ts`
+- [ ] `common/src/constants/ipc-channels.ts`
+- [ ] `common/src/types/api.ts`
+- [ ] `common/src/types/events.ts`
+- [ ] `common/src/types/index.ts`
+- [ ] `common/src/types/models.ts`
+- [ ] `common/src/types/plugins.ts`
+- [ ] `common/src/types/settings.ts`
+- [ ] `common/src/utils/index.ts`
+- [ ] `common/src/utils/zod-schemas.ts`
+
+## electron-shell/
+- [ ] `electron-shell/package.json`
+- [ ] `electron-shell/tsconfig.json`
+- └── src/
+    ### main/
+    - [ ] `electron-shell/src/main/index.ts`
+    - [ ] `electron-shell/src/main/window-manager.ts`
+    - [ ] `electron-shell/src/main/menu-setup.ts`
+    - [ ] `electron-shell/src/main/ipc-main-router.ts`
+    - [ ] `electron-shell/src/main/services/feature-flag-service.ts`
+    - [ ] `electron-shell/src/main/services/local-model-service.ts`
+    - [ ] `electron-shell/src/main/services/plugin-manager.ts`
+    - [ ] `electron-shell/src/main/services/screen-capture-service.ts`
+    - [ ] `electron-shell/src/main/services/security-service.ts`
+    - [ ] `electron-shell/src/main/services/telemetry-service.ts`
+    - [ ] `electron-shell/src/main/services/update-manager.ts`
+    ### preload/
+    - [ ] `electron-shell/src/preload/index.ts`
+    └── bridges/
+        - [ ] `electron-shell/src/preload/bridges/audio-api-bridge.ts`
+        - [ ] `electron-shell/src/preload/bridges/code-editor-api-bridge.ts`
+        - [ ] `electron-shell/src/preload/bridges/core-api-bridge.ts`
+        - [ ] `electron-shell/src/preload/bridges/debate-api-bridge.ts`
+        - [ ] `electron-shell/src/preload/bridges/fine-tune-api-bridge.ts`
+        - [ ] `electron-shell/src/preload/bridges/terminal-api-bridge.ts`
+        - [ ] `electron-shell/src/preload/bridges/vision-api-bridge.ts`
+
+## renderer-ui/
+- [ ] `renderer-ui/package.json`
+- [ ] `renderer-ui/tsconfig.json`
+- └── public/
+    - [ ] `renderer-ui/public/favicon.ico`
+    - [ ] `renderer-ui/public/index.html`
+- └── src/
+    ### assets/
+    - [ ] `renderer-ui/src/assets/` _(SVG, fonts, images)_
+    ### styles/
+    - [ ] `renderer-ui/src/styles/global.css`
+    - [ ] `renderer-ui/src/styles/theme-variables.css`
+    ### utils/
+    - [ ] `renderer-ui/src/utils/formatters.ts`
+    - [ ] `renderer-ui/src/utils/validators.ts`
+    ### hooks/
+    - [ ] `renderer-ui/src/hooks/useAppUpdater.ts`
+    - [ ] `renderer-ui/src/hooks/useTelemetry.ts`
+    ### services/
+    - [ ] `renderer-ui/src/services/api-client.ts`
+    - [ ] `renderer-ui/src/services/editor-service.ts`
+    - [ ] `renderer-ui/src/services/hotkey-service.ts`
+    ### app/
+    - [ ] `renderer-ui/src/app/App.tsx`
+    - [ ] `renderer-ui/src/app/Router.tsx`
+    - [ ] `renderer-ui/src/app/store.ts`
+    - [ ] `renderer-ui/src/app/theme.ts`
+    ### components/common/
+    - [ ] `renderer-ui/src/components/common/Button.tsx`
+    - [ ] `renderer-ui/src/components/common/Card.tsx`
+    - [ ] `renderer-ui/src/components/common/Icon.tsx`
+    - [ ] `renderer-ui/src/components/common/LoadingSpinner.tsx`
+    - [ ] `renderer-ui/src/components/common/Modal.tsx`
+    ### components/layout/
+    - [ ] `renderer-ui/src/components/layout/MainLayout.tsx`
+    - [ ] `renderer-ui/src/components/layout/Sidebar.tsx`
+    - [ ] `renderer-ui/src/components/layout/TopNavbar.tsx`
+    ### features/
+    - [ ] _[repeat for each feature folder and its files]_  
+
+*(Continue expanding each `renderer-ui/src/features/{feature-name}/…` with exactly the same pattern of checkboxes for every .tsx, hook, component, etc.)*
+
+## backend/
+- [ ] `backend/poetry.lock`
+- [ ] `backend/pyproject.toml`
+- └── alembic/
+    - [ ] `backend/alembic/alembic.ini`
+    - [ ] `backend/alembic/env.py`
+    - [ ] `backend/alembic/script.py.mako`
+    - [ ] `backend/alembic/versions/` _(migration files)_
+- └── app/
+    - [ ] `backend/app/main.py`
+    - [ ] `backend/app/api_v1_router.py`
+    - [ ] `backend/app/dependencies.py`
+- [ ] `backend/cli.py`
+- └── config/
+    - [ ] `backend/config/settings.py`
+- └── core/
+    - [ ] `backend/core/database.py`
+    - [ ] `backend/core/security.py`
+- └── utils/
+    - [ ] `backend/utils/file_utils.py`
+    - [ ] `backend/utils/text_processing.py`
+- └── ai_core/
+    - [ ] `backend/ai_core/embedding_models/base_embedder.py`
+    - [ ] `backend/ai_core/embedding_models/sentence_transformer_embedder.py`
+    - [ ] `backend/ai_core/llm_clients/base_llm_client.py`
+    - [ ] `backend/ai_core/llm_clients/local_gguf_client.py`
+    - [ ] `backend/ai_core/llm_clients/openrouter_client.py`
+    - [ ] `backend/ai_core/vector_db/qdrant_client.py`
+- └── features/
+    - [ ] _[repeat similarly for each feature subfolder: agent_config, audio_processing, chat_completion, …]_
+
+## workers/
+- [ ] `workers/Dockerfile.worker`
+- [ ] `workers/requirements.worker.txt`
+- [ ] `workers/celery_app.py`
+- └── ml_tasks/
+    - [ ] `workers/ml_tasks/embedding_task.py`
+    - [ ] `workers/ml_tasks/evaluation_task.py`
+    - [ ] `workers/ml_tasks/fine_tuner_task.py`
+
+## plugins-core/
+- └── example-hello-world/
+    - [ ] `plugins-core/example-hello-world/dist/index.js`
+    - [ ] `plugins-core/example-hello-world/plugin.json`
+
+## plugins-external/
+- [ ] `plugins-external/README.md`
+
+## scripts/
+- [ ] `scripts/bootstrap_dev.sh`
+- [ ] `scripts/build_all.sh`
+- [ ] `scripts/convert_gguf_models.py`
+- [ ] `scripts/db_migrate.sh`
+- [ ] `scripts/fetch_models.sh`
+- [ ] `scripts/test_all.sh`
+
+## tests/
+- └── backend/integration/
+    - [ ] `tests/backend/integration/test_fine_tune_api.py`
+- └── backend/unit/
+    - [ ] `tests/backend/unit/test_fine_tune_service.py`
+- └── electron-shell/unit/
+    - [ ] `tests/electron-shell/unit/test_ipc_router.ts`
+- └── renderer-ui/integration/
+    - [ ] `tests/renderer-ui/integration/model_hub_flow.test.tsx`
+- └── renderer-ui/unit/
+    - [ ] `tests/renderer-ui/unit/CodeEditor.test.tsx`
+- └── e2e/
+    - [ ] `tests/e2e/playwright.config.ts`
+    - [ ] `tests/e2e/specs/onboarding.spec.ts`
+- └── fixtures/
+    - [ ] `tests/fixtures/small_dataset.jsonl`
+    - [ ] `tests/fixtures/tutorial_image.png`
+
+## docs/
+- └── adr/
+    - [ ] `docs/adr/ADR-0001-record-decisions.md`
+    - [ ] `docs/adr/ADR-0002-electron-context-isolation.md`
+- └── api_reference/
+    - [ ] `docs/api_reference/openapi.md`
+- [ ] `docs/contributing.md`
+- └── developer_guide/
+    - [ ] `docs/developer_guide/build_system.md`
+    - [ ] `docs/developer_guide/coding_style.md`
+- [ ] `docs/release_process.md`
+- [ ] `docs/security_overview.md`
+- [ ] `docs/telemetry_policy.md`
+- └── user_guide/
+    - [ ] `docs/user_guide/getting_started.md`
+    - [ ] `docs/user_guide/model_hub.md`
+    - [ ] `docs/user_guide/troubleshooting.md`
+```
+
+Özür dilerim, hemen Türkçe’ye çeviriyorum. Aşağıda monorepo’nuzdaki **her klasör** için “oluşturulacak dosyalar” listesi var. ■ işaretledikçe o dosyayı oluşturduğunuza ✓ koyabilirsiniz.
+
+---
+
+## .github/workflows
+
+* [ ] ci.yml
+* [ ] release.yml
+* [ ] nightly-fine-tune.yml
+* [ ] e2e-tests.yml
+
+## Kök dizin (config & script’ler)
+
+* [ ] .env.example
+* [ ] .eslintignore
+* [ ] .eslintrc.js
+* [ ] .gitignore
+* [ ] .prettierignore
+* [ ] .prettierrc.js
+* [ ] Dockerfile
+* [ ] docker-compose.yml
+* [ ] pnpm-workspace.yaml
+* [ ] package.json (workspaces kök)
+* [ ] tsconfig.base.json
+* [ ] README.md
+
+## common/
+
+* [ ] package.json
+* [ ] tsconfig.json
+* src/constants
+
+  * [ ] index.ts
+  * [ ] ipc-channels.ts
+* src/types
+
+  * [ ] api.ts
+  * [ ] events.ts
+  * [ ] index.ts
+  * [ ] models.ts
+  * [ ] plugins.ts
+  * [ ] settings.ts
+* src/utils
+
+  * [ ] index.ts
+  * [ ] zod-schemas.ts
+
+## electron-shell/
+
+* [ ] package.json
+* [ ] tsconfig.json
+* src/main
+
+  * [ ] index.ts
+  * [ ] window-manager.ts
+  * [ ] menu-setup.ts
+  * [ ] ipc-main-router.ts
+  * services/
+
+    * [ ] feature-flag-service.ts
+    * [ ] local-model-service.ts
+    * [ ] plugin-manager.ts
+    * [ ] screen-capture-service.ts
+    * [ ] security-service.ts
+    * [ ] telemetry-service.ts
+    * [ ] update-manager.ts
+* src/preload
+
+  * [ ] index.ts
+  * bridges/
+
+    * [ ] audio-api-bridge.ts
+    * [ ] code-editor-api-bridge.ts
+    * [ ] core-api-bridge.ts
+    * [ ] debate-api-bridge.ts
+    * [ ] fine-tune-api-bridge.ts
+    * [ ] terminal-api-bridge.ts
+    * [ ] vision-api-bridge.ts
+
+## renderer-ui/
+
+* [ ] package.json
+* [ ] tsconfig.json
+* public/
+
+  * [ ] favicon.ico
+  * [ ] index.html
+* src/assets/ (SVG, font, resim)
+* src/styles/
+
+  * [ ] global.css
+  * [ ] theme-variables.css
+* src/utils/
+
+  * [ ] formatters.ts
+  * [ ] validators.ts
+* src/hooks/
+
+  * [ ] useAppUpdater.ts
+  * [ ] useTelemetry.ts
+* src/services/
+
+  * [ ] api-client.ts
+  * [ ] editor-service.ts
+  * [ ] hotkey-service.ts
+* src/app/
+
+  * [ ] App.tsx
+  * [ ] Router.tsx
+  * [ ] store.ts
+  * [ ] theme.ts
+* src/components/common/
+
+  * [ ] Button.tsx
+  * [ ] Card.tsx
+  * [ ] Icon.tsx
+  * [ ] LoadingSpinner.tsx
+  * [ ] Modal.tsx
+* src/components/layout/
+
+  * [ ] MainLayout.tsx
+  * [ ] Sidebar.tsx
+  * [ ] TopNavbar.tsx
+* src/features/
+
+  * **Her özellik için** ilgili klasördeki .tsx, hook ve bileşen dosyalarını oluşturun.
+
+## backend/
+
+* [ ] poetry.lock
+* [ ] pyproject.toml
+* alembic/
+
+  * [ ] alembic.ini
+  * [ ] env.py
+  * [ ] script.py.mako
+  * versions/ (migrasyon dosyaları)
+* app/
+
+  * [ ] main.py
+  * [ ] api\_v1\_router.py
+  * [ ] dependencies.py
+* [ ] cli.py
+* config/
+
+  * [ ] settings.py
+* core/
+
+  * [ ] database.py
+  * [ ] security.py
+* utils/
+
+  * [ ] file\_utils.py
+  * [ ] text\_processing.py
+* ai\_core/embedding\_models/
+
+  * [ ] base\_embedder.py
+  * [ ] sentence\_transformer\_embedder.py
+* ai\_core/llm\_clients/
+
+  * [ ] base\_llm\_client.py
+  * [ ] local\_gguf\_client.py
+  * [ ] openrouter\_client.py
+* ai\_core/vector\_db/
+
+  * [ ] qdrant\_client.py
+* features/
+
+  * **Her özellik (agent\_config, audio\_processing, …) için**
+
+    * router.py
+    * service.py
+    * schemas.py / models.py (gerekiyorsa)
+
+## workers/
+
+* [ ] Dockerfile.worker
+* [ ] requirements.worker.txt
+* [ ] celery\_app.py
+* ml\_tasks/
+
+  * [ ] embedding\_task.py
+  * [ ] evaluation\_task.py
+  * [ ] fine\_tuner\_task.py
+
+## plugins-core/
+
+* example-hello-world/
+
+  * [ ] dist/index.js
+  * [ ] plugin.json
+
+## plugins-external/
+
+* [ ] README.md
+
+## scripts/
+
+* [ ] bootstrap\_dev.sh
+* [ ] build\_all.sh
+* [ ] convert\_gguf\_models.py
+* [ ] db\_migrate.sh
+* [ ] fetch\_models.sh
+* [ ] test\_all.sh
+
+## tests/
+
+* backend/integration/
+
+  * [ ] test\_fine\_tune\_api.py
+* backend/unit/
+
+  * [ ] test\_fine\_tune\_service.py
+* electron-shell/unit/
+
+  * [ ] test\_ipc\_router.ts
+* renderer-ui/integration/
+
+  * [ ] model\_hub\_flow\.test.tsx
+* renderer-ui/unit/
+
+  * [ ] CodeEditor.test.tsx
+* e2e/
+
+  * [ ] playwright.config.ts
+  * specs/onboarding.spec.ts
+* fixtures/
+
+  * [ ] small\_dataset.jsonl
+  * [ ] tutorial\_image.png
+
+## docs/
+
+* adr/
+
+  * [ ] ADR-0001-record-decisions.md
+  * [ ] ADR-0002-electron-context-isolation.md
+* api\_reference/
+
+  * [ ] openapi.md
+* [ ] contributing.md
+* developer\_guide/
+
+  * [ ] build\_system.md
+  * [ ] coding\_style.md
+* [ ] release\_process.md
+* [ ] security\_overview\.md
+* [ ] telemetry\_policy.md
+* user\_guide/
+
+  * [ ] getting\_started.md
+  * [ ] model\_hub.md
+  * [ ] troubleshooting.md
+
+---
+
+Bu listeyi takip ederek monorepo’nuzun tüm boş dosya ve klasörlerini sırasıyla oluşturabilirsiniz. Her bir ✓ işareti, o dosyanın eklendiğini gösterir. Kolay gelsin!
+
